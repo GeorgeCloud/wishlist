@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block body %}
+    <ul id="shop-items">
+      {% for user in users %}
+        <figure>
+          <a href="/users/{{ user._id }}">
+            <img src="{{url_for('static', filename='images/shy.gif')}}" alt="NFT Image">
+            <figcaption>@{{user._id}}</figcaption>
+          </a>
+        </figure>
+      </li>
+      {% endfor %}
+      <li>
+    </ul>
+    <footer></footer>
+    <script src='main.js' type="module"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<fieldset class="col-view">
+  <legend>{{title}}</legend>
+
+  <label class="left-center">Owner Username</label>
+  <input type="text" placeholder="{{ product.owner if product else '' }}" name="owner" required>
+
+  <label class="left-center">Product Name</label>
+  <input type="text" placeholder="{{ product.name if product else '' }}" name="name" required>
+
+  <label class="left-center">Description</label>
+  <input type="text" value="{{ product.description }}" placeholder="{{ product.description if product else '' }}" name="description" required>
+
+  <input type="submit" value="Create Product">
+</fieldset>

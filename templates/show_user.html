@@ -1,0 +1,63 @@
+{% extends '_base.html' %}
+
+{% block head %}
+  <title>{{ user._id }}</title>
+{% endblock %}
+
+{% block body %}
+  <div class="profile">
+    <div class="profile-header">
+      <img id="profile-image" src="{{ url_for('static', filename='images/tears.gif') }}" alt="Profile Image">
+      <h1 class="profile-name">{{ user['_id'] }}</h1>
+
+      <ul class="stats">
+        <li>Items owned: 0</li>
+        <li>Views: 0</li>
+      </ul>
+    </div>
+
+    <div class="user-items">
+      <ul id="shop-items">
+        {% for product in products %}
+          <li>
+            <figure>
+              <a href="products/{{product._id}}">
+                <img src="{{ url_for('static', filename='images/tears.gif') }}" alt="NFT Image">
+              </a>
+              <h3 class="text-center">{{ product.name }}</h3>
+            </figure>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+{#    <div class="card" style="width: 18rem;">#}
+{#      <img src="{{ url_for('static', filename='images/tears.gif') }}" alt="Profile Image">#}
+{#      <div class="card-body">#}
+{#        <p class="card-text">{{ user.bio }}</p>#}
+{#      </div>#}
+{#    </div>#}
+
+{#  <div class="side-by-side">#}
+{#    <div>#}
+{#      <h1 style="text-align: center;">{{user._id}}</h1>#}
+{##}
+{#      <div class="stats">#}
+{#        <h4>NFT Item Count: {{ products_length }}</h4>#}
+{#      </div>#}
+{##}
+{#      <ul id="shop-items">#}
+{#        {% for product in products %}#}
+{#        <li>#}
+{#          <figure>#}
+{#            <img src="{{url_for('static', filename='images/tears.gif')}}" alt="NFT Image">#}
+{#            <figcaption>{{product.name.capitalize()}}</figcaption>#}
+{#            <p>@{{product.owner}}</p>#}
+{#          </figure>#}
+{#        </li>#}
+{#        {% endfor %}#}
+{#      </ul>#}
+{#    </div>#}
+{#  </div>#}
+{% endblock %}

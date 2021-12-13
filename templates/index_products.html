@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+
+{% block body %}
+    <ul id="shop-items">
+      {% for product in products %}
+        <li>
+          <figure>
+            <a href="products/{{product._id}}">
+              <img src="{{url_for('static', filename='images/tears.gif')}}" alt="NFT Image">
+            </a>
+            <h3 class="text-center">{{ product.name }}</h3>
+            <p style="font-size: .8rem;">seller: {{ product.owner_username }}</p>
+{#            <button>Add to Cart</button>#}
+          </figure>
+        </li>
+      {% endfor %}
+    </ul>
+    <footer></footer>
+    <script src='main.js' type="module"></script>
+{% endblock %}
