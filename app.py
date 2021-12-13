@@ -61,16 +61,15 @@ def show_product(product_id):
 
     return render_template('show_product.html', product=product)
 #
-# @app.route('/playlists/<playlist_id>/edit', methods=['GET'])
-# def product_edit(product_id):
-#     product = products.find_one({'_id': ObjectId(product_id)})
-#     return render_template('playlists_edit.html', product=product, title="Edit Playlist")
-#
-# @app.route('/playlists/<playlist_id>/delete')
-# def playlist_delete(playlist_id):
-#     products.delete_one({'_id': ObjectId(playlist_id)})
-#     return redirect(url_for('playlists_index'))
+@app.route('/products/<playlist_id>/edit', methods=['GET'])
+def product_edit(product_id):
+    product = products.find_one({'_id': ObjectId(product_id)})
+    return render_template('playlists_edit.html', product=product, title="Edit Product")
 
+@app.route('/products/<product_id>/delete')
+def playlist_delete(product_id):
+    products.delete_one({'_id': ObjectId(product_id)})
+    return redirect(url_for('index_products'))
 
 @app.route('/users', methods=['GET'])
 def index_users():
@@ -96,6 +95,16 @@ def show_user(username):
     user_products = products.find({'owner_username': username})
 
     return render_template('show_user.html', user=user, products=user_products)
+
+@app.route('/users/<username>/edit', methods=['GET'])
+def user_edit(username):
+    user = users.find_one({'_id': username})
+    return render_template('edit_user.html', user=user, title="Edit User")
+
+@app.route('/users/<username>/delete')
+def user_delete(username):
+    users.delete_one({'_id': username})
+    return redirect(url_for('index_users'))
 
 
 if __name__ == '__main__':
